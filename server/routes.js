@@ -4,7 +4,8 @@ import { logger } from "./util.js"
 const {
     location,
     pages: {
-        homeHTML
+        homeHTML,
+        controllerHTML
     }
 } = config
 const controller = new Controller()
@@ -29,10 +30,29 @@ async function routes(request, response) {
         // response.writeHead(200, {
         //     'Content-Type': 'text/html'
         // })
+        return stream.pipe(response)
+    }
+
+    if(method === 'GET' && url === '/controller') {
+        const {
+            stream
+        } = await controller.getFileStream(controllerHTML)
+
+        // padrão do response é text/html
+        // response.writeHead(200, {
+        //     'Content-Type': 'text/html'
+        // })
 
         return stream.pipe(response)
     }
-    return response.end('hello')
+
+    if(method === 'GET') {
+
+        return;
+    }
+
+    response.writeHead(404)
+    return response.end()
 }
 
 export function handler(request, response) {
