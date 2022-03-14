@@ -146,9 +146,9 @@ describe('#routes - test site for api response', () => {
         expect(params.response.writeHead).not.toHaveBeenCalled()
     })
 
-    test(`GET /unknown - given an inexistent route it should response with 404`, async () => {
+    test(`POST /unknown - given an inexistent route it should response with 404`, async () => {
         const params = TestUtil.defaulHandleParams()
-        params.request.method = 'GET'
+        params.request.method = 'POST'
         params.request.url = '/unknown'
         
         
@@ -159,7 +159,34 @@ describe('#routes - test site for api response', () => {
     })
 
     describe('exceptions', () => {
-        test.todo('given inexistent file it should respond with 404')
-        test.todo('given an error it should respond with 500')
+        test('given inexistent file it should respond with 404', async () => {
+            const params = TestUtil.defaulHandleParams()
+            params.request.method = 'GET'
+            params.request.url = '/index.png'
+            jest.spyOn(
+                Controller.prototype,
+                Controller.prototype.getFileStream.name
+            ).mockRejectedValue(new Error('Error: ENOENT: no such file or directory'))
+            
+            await handler(...params.values())
+    
+            expect(params.response.writeHead).toHaveBeenCalledWith(404)
+            expect(params.response.end).toHaveBeenCalled()
+        })
+        
+        test('given an error it should respond with 500', async () => {
+            const params = TestUtil.defaulHandleParams()
+            params.request.method = 'GET'
+            params.request.url = '/index.png'
+            jest.spyOn(
+                Controller.prototype,
+                Controller.prototype.getFileStream.name
+            ).mockRejectedValue(new Error('Error:'))
+            
+            await handler(...params.values())
+    
+            expect(params.response.writeHead).toHaveBeenCalledWith(500)
+            expect(params.response.end).toHaveBeenCalled()
+        })
     })
 })
