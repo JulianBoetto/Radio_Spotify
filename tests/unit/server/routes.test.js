@@ -6,6 +6,7 @@ import {
     beforeEach
 } from '@jest/globals'
 import config from '../../../server/config.js'
+import { Controller } from '../../../server/controller.js'
 const {
     pages,
     location
@@ -32,7 +33,29 @@ describe('#routes - test site for api response', () => {
         )
         expect(params.response.end).toHaveBeenCalled()
     })
-    test.todo(`GET /home - should response with ${pages.homeHTML} file stream`)
+    test(`GET /home - should response with ${pages.homeHTML} file stream`, async () => {
+        const params = TestUtil.defaulHandleParams()
+        params.request.method = 'GET'
+        params.request.url = '/home'
+        const mockFileStream = TestUtil.generateReadableStream(['data'])
+
+        jest.spyOn(
+            Controller.prototype,
+            Controller.prototype.getFileStream.name,
+        ).mockResolvedValue({
+            stream: mockFileStream,
+        })
+
+        jest.spyOn(
+            mockFileStream,
+            'pipe'
+        ).mockReturnValue()
+        
+        await handler(...params.values())
+
+        expect(Controller.prototype.getFileStream).toBeCalledWith(pages.homeHTML)
+        expect(mockFileStream.pipe).toHaveBeenCalledWith(params.response)
+    })
     test.todo(`GET /controller - should response with ${pages.controllerHTML} file stream`)
     test.todo(`GET /file.ext - should response with file stream`)
     test.todo(`GET /unknown - given an inexistent route it should response with file stream`)
