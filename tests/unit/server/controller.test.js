@@ -32,6 +32,7 @@ describe('#controller - test site for controller return', () => {
         const controller = new Controller()
         const controllerReturn = await controller.getFileStream('./index.html')
 
+        expect(mockResolved).toBeCalledTimes(1)
         expect(mockResolved).toBeCalledWith('./index.html')
         expect(controllerReturn).toStrictEqual({
             stream: mockFileStream,
