@@ -7,5 +7,22 @@ export class Controller {
     async getFileStream(filename) {
         return this.service.getFileStream(filename)
     }
+
+    createClientStream() {
+        const {
+            id,
+            clienStrem
+        } = this.service.createClientStream()
+
+        const onClose = () => {
+            logger.info(`closing connection of ${id}`)
+            this.service.removeClientStream(id)
+        }
+
+        return {
+            stream: clienStrem,
+            onClose
+        }
+    }
     
 }
