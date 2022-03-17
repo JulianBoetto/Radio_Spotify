@@ -32,9 +32,6 @@ export class Service {
         this.currentBitRate = 0
         this.throttleTransform = {}
         this.currentReadable = {}
-        setTimeout(()=>{
-            this.startStream()
-        }, 2000)
     }
 
     getClientStream() {
@@ -106,7 +103,7 @@ export class Service {
         })
     }
 
-    async startStream() {
+    async startStreamming() {
         logger.info(`Starting with ${this.currentSong}`)
         const bitrate = this.currentBitRate = (await this.getBitRate(this.currentSong)) / bitRateDivisor
         const throttleTransform = new throttle(bitrate)
@@ -116,6 +113,10 @@ export class Service {
             throttleTransform,
             this.broadCast()
         )
+    }
+
+    stopStreamming() {
+        this.throttleTransform?.end?.()
     }
 
     createFileStream(filename) {
