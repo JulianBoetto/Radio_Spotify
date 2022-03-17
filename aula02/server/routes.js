@@ -55,11 +55,11 @@ async function routes(request, response) {
             onClose
         } = controller.createClientStream()
         request.once('close', onClose)
-        request.writeHead(200, {
+        response.writeHead(200, {
             'Content-Type': 'audio/mpeg',
             'Accept-rages': 'bytes'
         })
-
+        
         return stream.pipe(response)
     }
 

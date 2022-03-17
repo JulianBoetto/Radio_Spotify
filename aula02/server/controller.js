@@ -1,4 +1,5 @@
 import { Service } from './service.js'
+import { logger } from './util.js'
 
 export class Controller {
     constructor() {
@@ -11,8 +12,8 @@ export class Controller {
     createClientStream() {
         const {
             id,
-            clienStrem
-        } = this.service.createClientStream()
+            clientStream
+        } = this.service.getClientStream()
 
         const onClose = () => {
             logger.info(`closing connection of ${id}`)
@@ -20,7 +21,7 @@ export class Controller {
         }
 
         return {
-            stream: clienStrem,
+            stream: clientStream,
             onClose
         }
     }
