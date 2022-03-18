@@ -1,43 +1,129 @@
-import { 
-    jest,
+import {
     expect,
     describe,
     test,
+    jest,
     beforeEach
-} from '@jest/globals'
-import config from '../../../server/config.js'
-import { Controller } from '../../../server/controller.js'
-import { Service } from '../../../server/service.js'
-import TestUtil from '../_util/testUtil.js'
-const { pages } = config
-
-describe('#controller - test site for controller return', () => {
+  } from '@jest/globals'
+  
+  import {
+    Controller
+  } from '../../../server/controller.js'
+  import {
+    Service
+  } from '../../../server/service.js'
+  
+  import TestUtil from './../_util/testUtil.js'
+  
+  describe('#Controller - test suite for controller calls', () => {
     beforeEach(() => {
-        jest.restoreAllMocks()
-        jest.clearAllMocks
+      jest.restoreAllMocks()
+      jest.clearAllMocks()
+  
     })
-
-    test('getFileStream - should return a file stream', async () => {
-        const mockFileStream = TestUtil.generateReadableStream(['data'])
-        const expectedType = '.html'
-
-        const mockResolved = jest.spyOn(
-            Service.prototype,
-            Service.prototype.getFileStream.name
-        ).mockResolvedValue({
-            stream: mockFileStream,
-            type: expectedType
-        })
-
+  
+    test('#getFileStream', async () => {
+      const mockStream = TestUtil.generateReadableStream(['test'])
+      const mockType = '.html'
+      const mockFileName = 'test.html'
+  
+      jest.spyOn(
+        Service.prototype,
+        Service.prototype.getFileStream.name,
+      ).mockResolvedValue({
+        stream: mockStream,
+        type: mockType
+      })
+  
+      const controller = new Controller()
+      const {
+        stream,
+        type
+      } = await controller.getFileStream(mockFileName)
+  
+      expect(stream).toStrictEqual(mockStream)
+      expect(type).toStrictEqual(mockType)
+    })
+    test('#createClientStream', async () => {
+      const mockStream = TestUtil.generateReadableStream(['test'])
+      const mockId = '1'
+      jest.spyOn(
+        Service.prototype,
+        Service.prototype.createClientStream.name,
+      ).mockReturnValue({
+        id: mockId,
+        clientStream: mockStream
+      })
+  
+      jest.spyOn(
+        Service.prototype,
+        Service.prototype.removeClientStream.name,
+      ).mockReturnValue()
+  
+      const controller = new Controller()
+      const {
+        stream,
+        onClose
+      } = controller.createClientStream()
+  
+      onClose()
+  
+      expect(stream).toStrictEqual(mockStream)
+      expect(Service.prototype.removeClientStream).toHaveBeenCalledWith(mockId)
+      expect(Service.prototype.createClientStream).toHaveBeenCalled()
+  
+    })
+    describe('handleCommand', () => {
+  
+      test('command stop', async () => {
+        jest.spyOn(
+          Service.prototype,
+          Service.prototype.stopStreamming.name,
+        ).mockResolvedValue()
+  
         const controller = new Controller()
-        const controllerReturn = await controller.getFileStream('./index.html')
-
-        expect(mockResolved).toBeCalledTimes(1)
-        expect(mockResolved).toBeCalledWith('./index.html')
-        expect(controllerReturn).toStrictEqual({
-            stream: mockFileStream,
-            type: expectedType
+        const data = {
+          command: '   stop   '
+        }
+        const result = await controller.handleCommand(data)
+        expect(result).toStrictEqual({
+          result: 'ok'
         })
+        expect(Service.prototype.stopStreamming).toHaveBeenCalled()
+      })
+  
+      test('command start', async () => {
+        jest.spyOn(
+          Service.prototype,
+          Service.prototype.startStreamming.name,
+        ).mockResolvedValue()
+  
+        const controller = new Controller()
+        const data = {
+          command: ' START '
+        }
+        const result = await controller.handleCommand(data)
+        expect(result).toStrictEqual({
+          result: 'ok'
+        })
+        expect(Service.prototype.startStreamming).toHaveBeenCalled()
+      })
+  
+      test('non existing command', async () => {
+        jest.spyOn(
+          Service.prototype,
+          Service.prototype.startStreamming.name,
+        ).mockResolvedValue()
+  
+        const controller = new Controller()
+        const data = {
+          command: ' NON EXISTING '
+        }
+        const result = await controller.handleCommand(data)
+        expect(result).toStrictEqual({
+          result: 'ok'
+        })
+        expect(Service.prototype.startStreamming).not.toHaveBeenCalled()
+      })
     })
-
-})
+  })
