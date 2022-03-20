@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1647737677554" clover="3.2.0">
-  <project timestamp="1647737677554" name="All files">
-    <metrics statements="161" coveredstatements="161" conditionals="48" coveredconditionals="48" methods="46" coveredmethods="46" elements="255" coveredelements="255" complexity="0" loc="161" ncloc="161" packages="3" files="7" classes="7"/>
+<coverage generated="1647744708480" clover="3.2.0">
+  <project timestamp="1647744708480" name="All files">
+    <metrics statements="185" coveredstatements="185" conditionals="50" coveredconditionals="50" methods="51" coveredmethods="51" elements="286" coveredelements="286" complexity="0" loc="185" ncloc="185" packages="3" files="7" classes="7"/>
     <package name="public.controller.js">
       <metrics statements="45" coveredstatements="45" conditionals="12" coveredconditionals="12" methods="18" coveredmethods="18"/>
       <file name="view.js" path="/home/julian-matias/Área de Trabalho/Julian/Radio_Spotify/aula03/public/controller/js/view.js">
@@ -54,7 +54,7 @@
       </file>
     </package>
     <package name="server">
-      <metrics statements="104" coveredstatements="104" conditionals="36" coveredconditionals="36" methods="22" coveredmethods="22"/>
+      <metrics statements="128" coveredstatements="128" conditionals="38" coveredconditionals="38" methods="27" coveredmethods="27"/>
       <file name="config.js" path="/home/julian-matias/Área de Trabalho/Julian/Radio_Spotify/aula03/server/config.js">
         <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0"/>
         <line num="3" count="3" type="stmt"/>
@@ -64,7 +64,7 @@
         <line num="7" count="3" type="stmt"/>
       </file>
       <file name="controller.js" path="/home/julian-matias/Área de Trabalho/Julian/Radio_Spotify/aula03/server/controller.js">
-        <metrics statements="17" coveredstatements="17" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="5"/>
+        <metrics statements="20" coveredstatements="20" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="5"/>
         <line num="10" count="6" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="17" count="3" type="stmt"/>
@@ -76,12 +76,15 @@
         <line num="28" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
-        <line num="43" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
         <line num="44" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
       </file>
       <file name="routes.js" path="/home/julian-matias/Área de Trabalho/Julian/Radio_Spotify/aula03/server/routes.js">
         <metrics statements="39" coveredstatements="39" conditionals="26" coveredconditionals="26" methods="4" coveredmethods="4"/>
@@ -100,74 +103,95 @@
         <line num="60" count="7" type="cond" truecount="4" falsecount="0"/>
         <line num="64" count="1" type="stmt"/>
         <line num="65" count="1" type="stmt"/>
-        <line num="66" count="1" type="stmt"/>
-        <line num="72" count="1" type="stmt"/>
-        <line num="75" count="6" type="cond" truecount="4" falsecount="0"/>
-        <line num="76" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="76" count="6" type="cond" truecount="4" falsecount="0"/>
         <line num="77" count="1" type="stmt"/>
         <line num="78" count="1" type="stmt"/>
         <line num="79" count="1" type="stmt"/>
-        <line num="83" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="87" count="4" type="stmt"/>
-        <line num="88" count="2" type="stmt"/>
-        <line num="89" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="90" count="1" type="stmt"/>
-        <line num="95" count="2" type="stmt"/>
-        <line num="99" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="84" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="88" count="4" type="stmt"/>
+        <line num="89" count="2" type="stmt"/>
+        <line num="90" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="96" count="2" type="stmt"/>
         <line num="100" count="1" type="stmt"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="106" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="107" count="1" type="stmt"/>
+        <line num="108" count="1" type="stmt"/>
+        <line num="109" count="1" type="stmt"/>
+        <line num="112" count="1" type="stmt"/>
+        <line num="113" count="1" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
+        <line num="119" count="10" type="stmt"/>
+        <line num="120" count="2" type="stmt"/>
+      </file>
+      <file name="service.js" path="/home/julian-matias/Área de Trabalho/Julian/Radio_Spotify/aula03/server/service.js">
+        <metrics statements="62" coveredstatements="62" conditionals="6" coveredconditionals="6" methods="18" coveredmethods="18"/>
+        <line num="38" count="3" type="stmt"/>
+        <line num="41" count="22" type="stmt"/>
+        <line num="42" count="22" type="stmt"/>
+        <line num="43" count="22" type="stmt"/>
+        <line num="44" count="22" type="stmt"/>
+        <line num="45" count="22" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="69" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="79" count="2" type="stmt"/>
+        <line num="81" count="2" type="stmt"/>
+        <line num="86" count="4" type="stmt"/>
+        <line num="87" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
         <line num="105" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="106" count="1" type="stmt"/>
         <line num="107" count="1" type="stmt"/>
-        <line num="108" count="1" type="stmt"/>
-        <line num="111" count="1" type="stmt"/>
-        <line num="112" count="1" type="stmt"/>
+        <line num="110" count="1" type="stmt"/>
         <line num="113" count="1" type="stmt"/>
-        <line num="118" count="10" type="stmt"/>
-        <line num="119" count="2" type="stmt"/>
-      </file>
-      <file name="service.js" path="/home/julian-matias/Área de Trabalho/Julian/Radio_Spotify/aula03/server/service.js">
-        <metrics statements="41" coveredstatements="41" conditionals="4" coveredconditionals="4" methods="13" coveredmethods="13"/>
-        <line num="34" count="3" type="stmt"/>
-        <line num="37" count="18" type="stmt"/>
-        <line num="38" count="18" type="stmt"/>
-        <line num="39" count="18" type="stmt"/>
-        <line num="40" count="18" type="stmt"/>
-        <line num="41" count="18" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
-        <line num="61" count="1" type="stmt"/>
-        <line num="65" count="2" type="stmt"/>
-        <line num="66" count="2" type="stmt"/>
-        <line num="75" count="2" type="stmt"/>
-        <line num="77" count="2" type="stmt"/>
-        <line num="82" count="4" type="stmt"/>
-        <line num="83" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="84" count="1" type="stmt"/>
-        <line num="90" count="1" type="stmt"/>
-        <line num="92" count="1" type="stmt"/>
-        <line num="97" count="1" type="stmt"/>
-        <line num="99" count="1" type="stmt"/>
-        <line num="101" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="102" count="1" type="stmt"/>
-        <line num="103" count="1" type="stmt"/>
-        <line num="106" count="1" type="stmt"/>
-        <line num="109" count="1" type="stmt"/>
-        <line num="114" count="1" type="stmt"/>
-        <line num="115" count="1" type="stmt"/>
-        <line num="116" count="1" type="stmt"/>
-        <line num="117" count="1" type="stmt"/>
         <line num="118" count="1" type="stmt"/>
-        <line num="126" count="2" type="stmt"/>
+        <line num="119" count="1" type="stmt"/>
+        <line num="120" count="1" type="stmt"/>
+        <line num="121" count="1" type="stmt"/>
+        <line num="122" count="1" type="stmt"/>
         <line num="130" count="2" type="stmt"/>
-        <line num="135" count="1" type="stmt"/>
-        <line num="137" count="1" type="stmt"/>
-        <line num="138" count="1" type="stmt"/>
+        <line num="134" count="2" type="stmt"/>
         <line num="139" count="1" type="stmt"/>
-        <line num="149" count="1" type="stmt"/>
-        <line num="150" count="1" type="stmt"/>
+        <line num="141" count="1" type="stmt"/>
+        <line num="142" count="1" type="stmt"/>
+        <line num="143" count="1" type="stmt"/>
+        <line num="153" count="1" type="stmt"/>
+        <line num="154" count="1" type="stmt"/>
+        <line num="161" count="2" type="stmt"/>
+        <line num="162" count="2" type="stmt"/>
+        <line num="163" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="165" count="1" type="stmt"/>
+        <line num="169" count="1" type="stmt"/>
+        <line num="170" count="1" type="stmt"/>
+        <line num="175" count="1" type="stmt"/>
+        <line num="176" count="1" type="stmt"/>
+        <line num="178" count="1" type="stmt"/>
+        <line num="179" count="1" type="stmt"/>
+        <line num="180" count="1" type="stmt"/>
+        <line num="182" count="1" type="stmt"/>
+        <line num="188" count="1" type="stmt"/>
+        <line num="189" count="1" type="stmt"/>
+        <line num="190" count="1" type="stmt"/>
+        <line num="195" count="1" type="stmt"/>
+        <line num="196" count="1" type="stmt"/>
+        <line num="211" count="1" type="stmt"/>
+        <line num="215" count="1" type="stmt"/>
+        <line num="221" count="1" type="stmt"/>
+        <line num="227" count="1" type="stmt"/>
       </file>
       <file name="util.js" path="/home/julian-matias/Área de Trabalho/Julian/Radio_Spotify/aula03/server/util.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -179,11 +203,11 @@
       <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
       <file name="testUtil.js" path="/home/julian-matias/Área de Trabalho/Julian/Radio_Spotify/aula03/tests/unit/_util/testUtil.js">
         <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-        <line num="12" count="26" type="stmt"/>
+        <line num="12" count="30" type="stmt"/>
         <line num="14" count="5" type="stmt"/>
         <line num="15" count="5" type="stmt"/>
         <line num="18" count="5" type="stmt"/>
-        <line num="24" count="16" type="stmt"/>
+        <line num="24" count="18" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="35" count="10" type="stmt"/>
